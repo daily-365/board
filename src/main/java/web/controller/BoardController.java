@@ -9,11 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import web.dto.BoardDTO;
+import web.dto.PageMaker;
+import web.dto.Paging;
 import web.service.face.BoardService;
 
 @Controller
@@ -27,17 +30,25 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     
 	@RequestMapping(value = "/list")
-	public void postList(BoardDTO board,Model model){
+	public void postList(BoardDTO board,Model model,
+			@ModelAttribute("paging")Paging paging){
 		
 		logger.info("All List");
 		
-		List<BoardDTO> list = service.selectAllList(board);
-	    model.addAttribute("list",list);
-			
+//		List<BoardDTO> list = service.selectAllList(board);
+//	    model.addAttribute("list",list);
 		
+	    List<BoardDTO> list  =service.pageNation(paging);
+		
+		 model.addAttribute("list",list);
+		 
+		 PageMaker pageMaker = new PageMaker();
+		 pageMaker.setPaging(paging);
+		 pageMaker.setTotalCount(service.pageListCount());
+		 
+		 model.addAttribute("pageMaker",pageMaker);
 	}
-	
-	
+		
 	@RequestMapping(value = "/view")
 	public void viewBoard(BoardDTO board,Model model) {
 		
@@ -81,6 +92,9 @@ public class BoardController {
 
 		
 	}
+	
+
+	
 	
 	
 	

@@ -43,6 +43,28 @@
    where boardNo = #{boardNo}
     </delete>
    
+   <!-- 페이지 네이션 -->
+   <select id="pageNation" resultType="web.dto.BoardDTO" parameterType="web.dto.Paging">
+     select boardNo,boardTitle,boardContent,boardDate,boardHit
+     from 
+     (select boardNo,boardTitle,boardContent,boardDate,boardHit, 
+        row_number() over (order by boardNo desc ) as rnum 
+        from tbl_board 
+          ) b
+          where rnum between #{startNum} and #{endNum}
+          order by boardNo desc
+        
+   </select>
+   
+   <select id="pageListCount" resultType="int">
+   <![CDATA[
+    select count(boardNo)
+    from tbl_board
+    where boardNo >0   
+   ]]>
+         
+   </select>
+   
    
    
    

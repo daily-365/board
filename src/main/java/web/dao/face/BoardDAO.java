@@ -1,6 +1,8 @@
 package web.dao.face;
 
 import web.dto.BoardDTO;
+import web.dto.Paging;
+
 import java.util.List;
 
 public interface BoardDAO {
@@ -21,6 +23,9 @@ public interface BoardDAO {
 	//삭제
 	public void deleteBoard(int boardNo);
 	
+	//페이징처리
+	public List<BoardDTO> pageNation(Paging paging);
+	public int pageListCount ();
 	
 	
 }

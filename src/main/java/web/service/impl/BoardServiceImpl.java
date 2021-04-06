@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import web.dao.face.BoardDAO;
 import web.dto.BoardDTO;
+import web.dto.Paging;
 import web.service.face.BoardService;
 
 @Service
@@ -46,6 +47,18 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteBoard(int boardNo) {
 		dao.deleteBoard(boardNo);
 		
+	}
+
+	@Override
+	public List<BoardDTO> pageNation(Paging paging) {
+		
+		return dao.pageNation(paging);
+	}
+
+	@Override
+	public int pageListCount() {
+		
+	return dao.pageListCount();
 	}
 
 
