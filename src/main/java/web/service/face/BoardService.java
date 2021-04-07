@@ -3,7 +3,8 @@ package web.service.face;
 import java.util.List;
 
 import web.dto.BoardDTO;
-import web.dto.Paging;
+import web.util.Paging;
+
 
 public interface BoardService {
 
@@ -22,7 +23,9 @@ public interface BoardService {
 	//삭제
 	public void deleteBoard(int boardNo);
 	
-	//페이징
-	public List<BoardDTO> pageNation(Paging paging);
-	public int pageListCount ();
+    //페이징 처리
+	public List<BoardDTO> listPage(Paging paging);
+	public int count(); 
+	
+	
 }

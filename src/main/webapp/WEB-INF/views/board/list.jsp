@@ -61,24 +61,28 @@
 
 <nav class="container text-center">
   <ul class="pagination">
-  <c:if test="${pageMaker.prev }">
+  <c:if test="${paging.startPage!=1}">
     <li>
-      <a href="list${pageMaker.makeQuery(pageMaker.startPage-1)}" >
-       <span aria-hidden="true">&laquo;</span>
+      <a href="list?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     </c:if>
     
-    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }"
-       var="idx">
-    <li><a href="list${pageMaker.makeQuery(idx)}">${idx}</a></li>
-     </c:forEach> 
-     
-     
-    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+ <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
+   <c:if test="${idx == paging.nowPage }">
+   <li><a href="#">${idx}</a></li>
+   </c:if>
+    <c:if test="${idx != paging.nowPage }">
+   <li><a href="list?nowPage=${idx}&cntPerPage=${paging.cntPerPage }">${idx}</a></li>
+   </c:if>
+  </c:forEach>
+
+
+   <c:if test="${paging.endPage!=paging.lastPage}">
     <li>
-      <a href="list${pageMaker.makeQuery(pageMaker.endPage+1 )}">
-      <span aria-hidden="true">&raquo;</span>
+      <a href="list?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
     </c:if>

@@ -7,14 +7,14 @@
     
     
     <!-- 목록 -->
-    <select id="selectAllList" resultType="BoardDTO">
+    <select id="selectAllList" resultType="web.dto.BoardDTO">
     select boardNo,boardTitle,boardContent,boardHit,boardDate
     from tbl_board       
     order by boardNo desc    
     </select>
     
     <!-- 상세보기 -->
-    <select id="selectByBoardNo" resultType="BoardDTO">
+    <select id="selectByBoardNo" resultType="web.dto.BoardDTO">
     select boardNo,boardTitle,boardContent,boardHit,boardDate
     from tbl_board       
     where boardNo = #{boardNo}   
@@ -43,8 +43,8 @@
    where boardNo = #{boardNo}
     </delete>
    
-   <!-- 페이지 네이션 -->
-   <select id="pageNation" resultType="web.dto.BoardDTO" parameterType="web.dto.Paging">
+   <!-- 총 게시글 갯수 출력 -->
+   <select id="listPage"  resultType="web.dto.BoardDTO"  parameterType="web.util.Paging">
      select boardNo,boardTitle,boardContent,boardDate,boardHit
      from 
      (select boardNo,boardTitle,boardContent,boardDate,boardHit, 
@@ -56,7 +56,8 @@
         
    </select>
    
-   <select id="pageListCount" resultType="int">
+   <!-- 총 게시글 출력 -->
+   <select id="count" resultType="int">
    <![CDATA[
     select count(boardNo)
     from tbl_board

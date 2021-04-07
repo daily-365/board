@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import web.dao.face.BoardDAO;
 import web.dto.BoardDTO;
-import web.dto.Paging;
 import web.service.face.BoardService;
+import web.util.Paging;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -50,16 +50,22 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> pageNation(Paging paging) {
+	public List<BoardDTO> listPage(Paging paging) {
 		
-		return dao.pageNation(paging);
+		return dao.listPage(paging);
 	}
 
 	@Override
-	public int pageListCount() {
+	public int count() {
 		
-	return dao.pageListCount();
+		return dao.count();
 	}
+
+	
+
+	
+	
+	
 
 
 	
