@@ -23,6 +23,9 @@ public interface BoardService {
 	//삭제
 	public void deleteBoard(int boardNo);
 	
+	//조회수 증가
+		public int updateHit(int boardNo);
+		
     //페이징 처리
 	public List<BoardDTO> listPage(Paging paging);
 	public int count(); 

@@ -29,7 +29,6 @@
 <section class="container">
 
 
-
 <table class="table table_hover">
 <thead>
   <tr>

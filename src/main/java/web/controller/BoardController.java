@@ -51,19 +51,23 @@ public class BoardController {
 		 
 		 model.addAttribute("paging",paging);
 		 model.addAttribute("list",service.listPage(paging));
- 
+       
 	  
 	 
 	
 	}
 		
 	@RequestMapping(value = "/view")
-	public void viewBoard(BoardDTO board,Model model) {
+	public void viewBoard(BoardDTO board,Model model,
+			@RequestParam("boardNo")int boardNo) {
 		
 		logger.info("Borad Read");
 		
       BoardDTO view= service.selectByBoardNo(board);
       model.addAttribute("view",view);
+      
+      service.updateHit(boardNo);
+
 		
 	}
 	

@@ -61,6 +61,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.count();
 	}
 
+	@Override
+	public int updateHit(int boardNo) {
+		
+		return dao.updateHit(boardNo);
+	}
+
 	
 
 	

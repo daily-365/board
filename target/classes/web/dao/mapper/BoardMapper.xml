@@ -42,6 +42,17 @@
     delete from tbl_board
    where boardNo = #{boardNo}
     </delete>
+    
+       <!-- 조회수 증가 -->
+   
+    <update id="updateHit">
+      update tbl_board
+      set boardHit = boardHit+1
+      where boardNo = #{boardNo}
+    
+    </update>
+   
+   
    
    <!-- 총 게시글 갯수 출력 -->
    <select id="listPage"  resultType="web.dto.BoardDTO"  parameterType="web.util.Paging">
@@ -66,7 +77,6 @@
          
    </select>
    
-   
-   
+
    
    </mapper>
