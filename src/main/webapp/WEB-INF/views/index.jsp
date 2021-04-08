@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
- 
+ <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 <!-- 부트스트랩 CDN-->
 
@@ -49,9 +49,16 @@
         
         
      </ul>
-      <form class="navbar-form navbar-right"  method="post" role="search">
+    
+ <form class="navbar-form navbar-right"  method="get" role="search">
         <div class="form-group">
-          <input type="text" name="boardTitle" class="form-control" placeholder="검색어를 입력해 주세요">
+        <select class="form-control" id="searchType" name ="searchType">
+      <option value="">목록</option>
+        <option value="t">제목</option>
+        <option value="c">내용 </option>
+        <option value="tc">제목 , 내용 </option>
+         </select>
+          <input type="text" name="keyword" class="form-control" placeholder="검색어를 입력해 주세요">
         </div>
         <button type="submit" class="btn btn-default">검색</button>
       </form>
@@ -64,14 +71,73 @@
 
 <section class="container">
 
-<c:url var="list"  value="/board/list" />  
 
- <a href="${list}" class="text-center">게시판 리스트</a>
+<table class="table table_hover">
+<thead>
+  <tr>
+    <th>번호</th>
+    <th>제목</th>
+    <th>내용</th>
+    <th>작성일</th>
+    <th>조회수</th>
+              
+  </tr>
+  </thead>
+  
+  <c:forEach var="list" items="${list }">
+  <tbody>
+  <tr>
+    <td>${list.boardNo}</td>
+    <td><a href="/board/view?boardNo=${list.boardNo}">${list.boardTitle}</a></td>
+    <td>${list.boardContent}</td>
+    <td><fmt:formatDate value="${list.boardDate}" pattern="yyyy-MM-dd"/></td>
+    <td>${list.boardHit}</td>
+  </tr>
+  </tbody>
+</c:forEach>
 
 
+</table>
+
+
+  <button class="btn col-sm-2 pull-right" type="button" class="btn"  onclick="javascript: location.href='/board/write'">글쓰기</button>
+  
+  
 </section>
 
-       
+       <nav class="container text-center">
+  <ul class="pagination">
+  <c:if test="${paging.startPage!=1}">
+    <li>
+      <a href="?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    
+ <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
+   <c:if test="${idx == paging.nowPage }">
+   <li><a href="#">${idx}</a></li>
+   </c:if>
+    <c:if test="${idx != paging.nowPage }">
+   <li><a href="?nowPage=${idx}&cntPerPage=${paging.cntPerPage }">${idx}</a></li>
+   </c:if>
+  </c:forEach>
+
+
+   <c:if test="${paging.endPage!=paging.lastPage}">
+    <li>
+      <a href="?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    </c:if>
+  </ul>
+</nav>
+
+
+
+ 
        
 <footer class="container-fluid bg-success text-center" style="padding: 30px; font-weight: bold">
 

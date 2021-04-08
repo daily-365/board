@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import web.dao.face.BoardDAO;
 import web.dto.BoardDTO;
 import web.service.face.BoardService;
-import web.util.Paging;
+import web.util.Search;
+
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -50,9 +51,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> listPage(Paging paging) {
+	public List<BoardDTO> listPage(Search search) {
 		
-		return dao.listPage(paging);
+		return dao.listPage(search);
 	}
 
 	@Override

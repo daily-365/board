@@ -10,8 +10,6 @@ public class BoardDTO {
 	private String boardContent;
 	private int boardHit;
 	private Date boardDate;
-	
-	
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -30,10 +28,10 @@ public class BoardDTO {
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-	public int getboardHit() {
+	public int getBoardHit() {
 		return boardHit;
 	}
-	public void setboardHit(int boardHit) {
+	public void setBoardHit(int boardHit) {
 		this.boardHit = boardHit;
 	}
 	public Date getBoardDate() {
@@ -42,6 +40,8 @@ public class BoardDTO {
 	public void setBoardDate(Date boardDate) {
 		this.boardDate = boardDate;
 	}
+	
+
 
 	
 

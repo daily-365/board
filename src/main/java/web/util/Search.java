@@ -1,8 +1,8 @@
 package web.util;
 
-public class Paging {
-
+public class Search {
 	
+
 	private int nowPage; //현제페이지
 	private int startPage; //시작페이지
 	private int endPage; //끝 페이지
@@ -12,12 +12,34 @@ public class Paging {
 	private int startNum; // 시작 값
 	private int endNum; // 끝 값
 	
-	public Paging () {}
+    private String searchType ="";
+    private String keyword="";
+    
+    
+    
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public Search () {}
 	
-	public Paging (int totalCount,int nowPage, int cntPerPage) {
+	public Search (int totalCount,int nowPage, int cntPerPage) {
 		
 		setNowPage(nowPage);
-		setcntPerPage(cntPerPage);
+		setCntPerPage(cntPerPage);
 		setTotalCount(totalCount);
 		
 		calcLastPage(totalCount, cntPerPage);
@@ -47,18 +69,14 @@ public class Paging {
     	 setStartPage(1);
      }
 	}
-	  //시작 값과 끝깂 계산
+	  //시작 값과 끝값 계산
 	
 	public void calStatEnd(int nowPage,int cntPerPage) {
 		
 		setEndNum(nowPage * cntPerPage);
 		setStartNum(getEndNum()-cntPerPage+1);
 	}
-	
-	
-	
-	
-	
+
 	public int getNowPage() {
 		return nowPage;
 	}
@@ -91,11 +109,11 @@ public class Paging {
 		this.totalCount = totalCount;
 	}
 
-	public int getcntPerPage() {
+	public int getCntPerPage() {
 		return cntPerPage;
 	}
 
-	public void setcntPerPage(int cntPerPage) {
+	public void setCntPerPage(int cntPerPage) {
 		this.cntPerPage = cntPerPage;
 	}
 
@@ -129,6 +147,8 @@ public class Paging {
 				+ totalCount + ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", startNum=" + startNum
 				+ ", endNum=" + endNum + "]";
 	}
+
 	
+		
 	
 }

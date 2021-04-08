@@ -1,7 +1,7 @@
 package web.dao.face;
 
 import web.dto.BoardDTO;
-import web.util.Paging;
+import web.util.Search;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public interface BoardDAO {
 	public int updateHit(int boardNo);
 	
     //페이징 처리
-	public List<BoardDTO> listPage(Paging paging);
+	public List<BoardDTO> listPage(Search search);
 	public int count(); 
 	
 	

@@ -9,8 +9,11 @@
     <!-- 목록 -->
     <select id="selectAllList" resultType="web.dto.BoardDTO">
     select boardNo,boardTitle,boardContent,boardHit,boardDate
-    from tbl_board       
-    order by boardNo desc    
+    from tbl_board
+     
+    
+    
+        
     </select>
     
     <!-- 상세보기 -->
@@ -53,29 +56,43 @@
     </update>
    
    
+   <!-- 검색  -->
+   
+    <sql id="search">
+ <if test="searchType != null">
+  <if test="searchType == 't'.toString()">where boardTitle like '%' || #{keyword} || '%'</if>
+  <if test="searchType == 'c'.toString()">where boardContent like '%' || #{keyword} || '%'</if>
+   <if test="searchType == 'tc'.toString()">where (boardTitle like '%' || #{keyword} || '%') or (boardContent like '%' || #{keyword} || '%')</if>
+ </if>
+</sql>
    
    <!-- 총 게시글 갯수 출력 -->
-   <select id="listPage"  resultType="web.dto.BoardDTO"  parameterType="web.util.Paging">
+   <select id="listPage"  resultType="web.dto.BoardDTO"  >
      select boardNo,boardTitle,boardContent,boardDate,boardHit
      from 
      (select boardNo,boardTitle,boardContent,boardDate,boardHit, 
         row_number() over (order by boardNo desc ) as rnum 
         from tbl_board 
+         <include refid="search"></include>
           ) b
-          where rnum between #{startNum} and #{endNum}
+           where rnum between #{startNum} and #{endNum}
           order by boardNo desc
         
    </select>
    
    <!-- 총 게시글 출력 -->
    <select id="count" resultType="int">
-   <![CDATA[
+   
     select count(boardNo)
     from tbl_board
-    where boardNo >0   
-   ]]>
-         
-   </select>
+    where
+    <include refid="search"></include>
+    <![CDATA[
+ boardNo > 0
+]]>
+</select>
+                
+     
    
 
    

@@ -29,9 +29,15 @@
   <form role="form" method="post" autocomplete="off" onsubmit="submitFunc()">
      
           
+<!--      <div class="fomr-group col-sm-4 col-sm-offset-4"> -->
+<!--     <label for="userId">작성자</label> -->
+<!--     <input class="form-control" type="text" name="userId" readonly="readonly" value=""> -->
+<!--     </div> -->
+    
+          
     <div class="fomr-group col-sm-4 col-sm-offset-4">
     <label for="boardTitle">제목</label>
-    <input class="form-control" type="text" name="boardTitle" placeholder="제목을 입력해 주세요" required="required">
+    <input class="form-control" type="text" name="boardTitle" placeholder="제목을 입력해 주세요"   required="required">
     </div>
     
     <br><br><br><br>
