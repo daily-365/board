@@ -3,6 +3,7 @@ package web.service.face;
 import java.util.List;
 
 import web.dto.BoardDTO;
+import web.util.Paging;
 import web.util.Search;
 
 
@@ -28,7 +29,7 @@ public interface BoardService {
 		public int updateHit(int boardNo);
 		
     //페이징 처리
-	public List<BoardDTO> listPage(Search search);
+	public List<BoardDTO> listPage(Paging paging);
 	public int count(); 
 	
 	

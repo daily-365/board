@@ -67,7 +67,7 @@
 </sql>
    
    <!-- 총 게시글 갯수 출력 -->
-   <select id="listPage"  resultType="web.dto.BoardDTO"  parameterType="web.util.Search" >
+   <select id="listPage"  resultType="web.dto.BoardDTO" >
      select boardNo,boardTitle,boardContent,boardDate,boardHit
      from 
      (select boardNo,boardTitle,boardContent,boardDate,boardHit, 
@@ -75,7 +75,7 @@
         from tbl_board 
          <include refid="search"></include>
           ) b
-           where rnum between #{startNum} and #{endNum}
+           where rnum between 1 and 10
           order by boardNo desc
         
    </select>

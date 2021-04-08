@@ -51,7 +51,7 @@
         
      </ul>
     
- <form class="navbar-form navbar-right"  method="get" role="search">
+ <form class="navbar-form navbar-right"  role="search">
         <div class="form-group">
         <select class="form-control" id="searchType" name ="searchType">
       <option value="">목록</option>

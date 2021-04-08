@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import web.dto.BoardDTO;
 import web.service.face.BoardService;
+import web.util.Paging;
 import web.util.Search;
 
 @Controller
@@ -22,7 +23,7 @@ import web.util.Search;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     
 	@RequestMapping(value = "/")
-	public String postList(BoardDTO board,Model model, Search search ,
+	public String postList(BoardDTO board,Model model, Paging paging , Search search ,
 			@RequestParam(value = "nowPage",required = false)String nowPage,
 	        @RequestParam(value = "cntPerPage",required = false)String cntPerPage
 			){
@@ -43,10 +44,12 @@ import web.util.Search;
 			cntPerPage="5";
 		}
 		
-		search = new Search(totalCount, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		  paging = new Paging(totalCount, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
 		 		
 		
-		 model.addAttribute("paging",search);
+		 model.addAttribute("paging",paging);
+		 
+		 
 		 model.addAttribute("list",service.listPage(search));
        
 	  
