@@ -13,13 +13,13 @@ import web.service.face.BoardService;
 import web.util.Search;
 
 @Controller
-	public class MainController {
+	public class HomeController {
 
 		
 	@Autowired
 	private BoardService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     
 	@RequestMapping(value = "/")
 	public String postList(BoardDTO board,Model model, Search search ,
@@ -50,7 +50,7 @@ import web.util.Search;
 		 model.addAttribute("list",service.listPage(search));
        
 	  
-		 return "index";
+		 return "home";
 	
 	}
 		

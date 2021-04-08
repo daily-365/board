@@ -16,6 +16,7 @@
 <script type="text/javascript" src="/../../resources/js/jquery-3.5.1.min.js"></script>
 
 
+
 <nav class="navbar navbar-warning">
   <div class="container-fluid bg-info">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,10 +68,13 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+
       
 
 <section class="container">
-
+ <br><br>
+ <h1 class="text-center">Board List</h1>
+<br><br>
 
 <table class="table table_hover">
 <thead>
@@ -88,7 +92,9 @@
   <tbody>
   <tr>
     <td>${list.boardNo}</td>
+    
     <td><a href="/board/view?boardNo=${list.boardNo}">${list.boardTitle}</a></td>
+    
     <td>${list.boardContent}</td>
     <td><fmt:formatDate value="${list.boardDate}" pattern="yyyy-MM-dd"/></td>
     <td>${list.boardHit}</td>
