@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import web.dao.face.BoardDAO;
 import web.dto.BoardDTO;
 import web.service.face.BoardService;
-import web.util.Paging;
-import web.util.Search;
-
+import web.util.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -57,19 +55,21 @@ public class BoardServiceImpl implements BoardService {
 		return dao.updateHit(boardNo);
 	}
 
+	@Override
+	public List<BoardDTO> listPage(Criteria cri) {
+	
+		return dao.listPage(cri);
+	}
+
+	@Override
+	public int listCount() {
+		
+		return dao.listCount();
+	}
+
 	
 
-	@Override
-	public List<BoardDTO> listPage(Paging paging) {
-		
-		return dao.listPage(paging);
-	}
 
-	@Override
-	public int count() {
-		
-		return dao.count();
-	}
 
 	
 	

@@ -1,10 +1,12 @@
 package web.util;
 
-public class Search extends Paging{
+public class SearchCriteria extends Criteria {
 
 	
-	private String searchType="";
-	private String keyword="";
+	
+	private String searchType = "" ;
+	private String keyword = "";
+	
 	
 	
 	public String getSearchType() {
@@ -22,4 +24,11 @@ public class Search extends Paging{
 	
 	
 	
+	
+	
+	
+	
+	
+	
+
 }

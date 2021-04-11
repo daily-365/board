@@ -111,36 +111,31 @@
   
 </section>
 
-       <nav class="container text-center">
+   <nav class="container text-center">
   <ul class="pagination">
-  <c:if test="${paging.startPage!=1}">
+  
+   <c:if test="${pageMaker.prev }">
     <li>
-      <a href="?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+      <a href="${pageMaker.makeSearch(pageMaker.startPage-1) }" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     </c:if>
     
- <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
-   <c:if test="${idx == paging.nowPage }">
-   <li><a href="#">${idx}</a></li>
-   </c:if>
-    <c:if test="${idx != paging.nowPage }">
-   <li><a href="?nowPage=${idx}&cntPerPage=${paging.cntPerPage }">${idx}</a></li>
-   </c:if>
-  </c:forEach>
+    <c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+    <li><a href="${pageMaker.makeSearch(idx)}">${idx}</a></li>
+     </c:forEach>
 
-
-   <c:if test="${paging.endPage!=paging.lastPage}">
+   <c:if test="${pageMaker.next  && pageMaker.endPage>0}">
     <li>
-      <a href="?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}" aria-label="Next">
+      <a href="${pageMaker.makeSearch(pageMaker.endPage+1)}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
     </c:if>
+    
   </ul>
 </nav>
-
 
 
  

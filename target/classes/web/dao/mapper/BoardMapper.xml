@@ -75,13 +75,13 @@
         from tbl_board 
          <include refid="search"></include>
           ) b
-           where rnum between 1 and 10
+           where rnum between #{startNum} and #{endNum}
           order by boardNo desc
         
    </select>
    
    <!-- 총 게시글 출력 -->
-   <select id="count" resultType="int">
+   <select id="listCount" resultType="int">
    
     select count(boardNo)
     from tbl_board
