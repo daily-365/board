@@ -33,6 +33,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      <c:if test="${member.verify eq 1 }">
+        <li><a href="/admin/index">${member.userName}페이지</a></li>
+      </c:if> 
+      
+      <c:if test="${member.verify eq 0 }">
+          <li><a href="">마이페이지</a></li>
+      </c:if>
+       
         <li><a href="/member/signup">회원가입 </a></li>
        
         <c:if test="${member eq null }">
@@ -40,12 +48,7 @@
          </c:if>
         
         <c:if test="${member ne null }">
-        
-        <script type="text/javascript">
-        alert('<%=session.getAttribute("userId")%>님 환영합니다.');
-       </script>
-       
-        <li><a href="/member/signout">로그아웃</a></li>
+          <li><a href="/member/signout">로그아웃</a></li>
         </c:if>
         
         
@@ -80,6 +83,7 @@
 <thead>
   <tr>
     <th>번호</th>
+    <th>작성자</th>
     <th>제목</th>
     <th>내용</th>
     <th>작성일</th>
@@ -92,9 +96,10 @@
   <tbody>
   <tr>
     <td>${list.boardNo}</td>
-    
-    <td><a href="/board/view?boardNo=${list.boardNo}">${list.boardTitle}</a></td>
-    
+    <td>${list.writeId}</td>
+      
+        <td><a href="/board/view?boardNo=${list.boardNo}">${list.boardTitle}</a></td>
+       
     <td>${list.boardContent}</td>
     <td><fmt:formatDate value="${list.boardDate}" pattern="yyyy-MM-dd"/></td>
     <td>${list.boardHit}</td>
@@ -104,9 +109,19 @@
 
 
 </table>
-
-
+     <script type="text/javascript">
+//      alert('${idCheck.writeId}'//java.lang.NumberFormatException: For input string: "writeId" )
+     </script>
+     
+     
+   <c:if test="${member eq null }">
+  <button class="btn col-sm-2 pull-right" type="button" class="btn"  onclick="javascript: alert('로그인 후 이용해 주세요'); location.href='/member/signin'">글쓰기</button>
+  </c:if>
+ 
+   <c:if test="${member ne null }">
   <button class="btn col-sm-2 pull-right" type="button" class="btn"  onclick="javascript: location.href='/board/write'">글쓰기</button>
+  </c:if>
+  
   
   
 </section>

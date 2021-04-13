@@ -2,6 +2,7 @@ package web.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,11 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import web.dto.BoardDTO;
+import web.dto.MemberDTO;
 import web.service.face.BoardService;
 
 
@@ -28,7 +31,7 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     
 	@RequestMapping(value = "/view")
-	public void viewBoard(BoardDTO board,Model model,
+	public void viewBoard(BoardDTO board,Model model,@ModelAttribute("member") MemberDTO member,
 			@RequestParam("boardNo")int boardNo,HttpSession session) {
 		
 		logger.info("Borad Read");
@@ -51,10 +54,13 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/write",method = RequestMethod.POST)
-	public String postWriteBoard(BoardDTO board) {
+	public String postWriteBoard(BoardDTO board,HttpServletRequest req,HttpSession session,
+			@ModelAttribute("member") MemberDTO member) {
 		logger.info("Post Borad Write");
-		service.writeBoard(board);
 		
+		 service.writeBoard(board);
+		
+	
 	
 		return "redirect:/";
 	}

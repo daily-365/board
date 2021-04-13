@@ -10,7 +10,15 @@ private String	userBirth;
 private String	userPhone;
 private String	userMail;
 
+private int verify;
 
+
+public int getVerify() {
+	return verify;
+}
+public void setVerify(int verify) {
+	this.verify = verify;
+}
 public String getUserId() {
 	return userId;
 }

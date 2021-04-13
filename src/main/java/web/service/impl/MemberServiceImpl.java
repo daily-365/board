@@ -20,17 +20,9 @@ public void signup(MemberDTO member) {
 }
 
 @Override
-public boolean signin(MemberDTO member) {
-	
-	if(dao.signin(member)>0) {
-		
-		return true;
-	}else {
-		
-		return false;
-	}
-	
-	
+public MemberDTO signin(MemberDTO member) {
+
+  return dao.signin(member);
 }
   
   

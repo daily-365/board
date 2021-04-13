@@ -10,8 +10,8 @@
   values (#{userId},#{userPw},#{userName},#{userGender},#{userBirth},#{userPhone},#{userMail})
     </insert>
   
-     <select id="signin" resultType="int">
-     select count(*)
+     <select id="signin" resultType="MemberDTO">
+     select userId,userPw,userName,userGender,userBirth,userPhone,userMail,verify
      from tbl_member
      where userId = #{userId}
      and userPw = #{userPw}    

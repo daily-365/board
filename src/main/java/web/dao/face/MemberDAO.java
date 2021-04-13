@@ -6,5 +6,5 @@ public interface MemberDAO {
 
 	public void signup(MemberDTO member);
 	
-	public int signin(MemberDTO member);
+	public MemberDTO signin(MemberDTO member);
 }

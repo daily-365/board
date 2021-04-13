@@ -18,7 +18,7 @@
     
     <!-- 상세보기 -->
     <select id="selectByBoardNo" resultType="web.dto.BoardDTO">
-    select boardNo,boardTitle,boardContent,boardHit,boardDate
+    select boardNo,boardTitle,boardContent,boardHit,boardDate,writeId
     from tbl_board       
     where boardNo = #{boardNo}   
     </select>
@@ -26,8 +26,8 @@
     
     <!-- 등록 -->
     <insert id="writeBoard">
-     insert into tbl_board (boardNo,boardTitle,boardContent)
-    values (tbl_board_seq.nextVal,#{boardTitle},#{boardContent})
+     insert into tbl_board (boardNo,boardTitle,boardContent,writeId)
+    values (tbl_board_seq.nextVal,#{boardTitle},#{boardContent},#{writeId})
     </insert>
    
    
@@ -68,9 +68,9 @@
    
    <!-- 총 게시글 갯수 출력 -->
    <select id="listPage"  resultType="web.dto.BoardDTO" >
-     select boardNo,boardTitle,boardContent,boardDate,boardHit
+     select boardNo,boardTitle,boardContent,boardDate,boardHit,writeId
      from 
-     (select boardNo,boardTitle,boardContent,boardDate,boardHit, 
+     (select boardNo,boardTitle,boardContent,boardDate,boardHit,writeId, 
         row_number() over (order by boardNo desc ) as rnum 
         from tbl_board 
          <include refid="search"></include>
@@ -92,8 +92,13 @@
 ]]>
 </select>
                 
-     
+   <!-- 작성자 = 사용자 아이디 => 작성자 체크 -->
+   <select id="idCheck" resultType="web.dto.BoardDTO" parameterType="web.dto.BoardDTO">
+     select writeId
+     from tbl_board
+      
+   </select>
    
-
+  
    
    </mapper>

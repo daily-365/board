@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.context.annotation.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
@@ -41,16 +42,8 @@
 
 </form>
 
-
-<c:if test="${login ne null }">
-<script type="text/javascript">
-alert('<%=session.getAttribute("userId")%>님 환영합니다.');
-
-</script>
-</c:if>
-
-
-
+    
+    
 <c:if test="${msg eq false }">
 <script type="text/javascript">
  alert('아이디와 비밀번호를 확인해 주세요')

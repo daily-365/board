@@ -67,6 +67,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listCount();
 	}
 
+	@Override
+	public List<BoardDTO> idCheck(BoardDTO board) {
+		
+		return dao.idCheck(board);
+	}
+
 	
 
 

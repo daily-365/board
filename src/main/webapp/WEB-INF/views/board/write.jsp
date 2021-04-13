@@ -29,10 +29,10 @@
   <form role="form" method="post" autocomplete="off" onsubmit="submitFunc()">
      
           
-<!--      <div class="fomr-group col-sm-4 col-sm-offset-4"> -->
-<!--     <label for="userId">작성자</label> -->
-<!--     <input class="form-control" type="text" name="userId" readonly="readonly" value=""> -->
-<!--     </div> -->
+     <div class="fomr-group col-sm-4 col-sm-offset-4">
+    <label for="writeId">작성자</label>
+    <input class="form-control" type="text" name="writeId" readonly="readonly" value="${member.userName}"><br>
+    </div>
     
           
     <div class="fomr-group col-sm-4 col-sm-offset-4">

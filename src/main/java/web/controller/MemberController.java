@@ -44,15 +44,15 @@ public class MemberController {
 	@RequestMapping(value = "/signin" ,method = RequestMethod.POST)
 	public String postSigin(MemberDTO member,HttpSession session,RedirectAttributes rttr) 
 	{ logger.info("post signin");
-	 
-	   boolean login = service.signin(member);
+
+       MemberDTO login = service.signin(member);
 	       
 	    
-	   if(login) {
+	   if(login != null ) {
 		   
 		 session.setAttribute("member", login);
-         session.setAttribute("userId", member.getUserId()); 
-
+       
+        
 		   return "redirect:/";
 		    
 		   

@@ -6,8 +6,6 @@ import web.dto.BoardDTO;
 import web.util.Criteria;
 
 
-
-
 public interface BoardService {
 
 	//목록
@@ -31,4 +29,8 @@ public interface BoardService {
 		//페이징 + 검색
 		public List<BoardDTO> listPage(Criteria cri);
 		public int listCount();
+
+    //아이디 체크 (작성자 체크(
+   public List<BoardDTO> idCheck(BoardDTO board);
+
 }

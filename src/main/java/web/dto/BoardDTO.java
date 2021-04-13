@@ -10,6 +10,15 @@ public class BoardDTO {
 	private String boardContent;
 	private int boardHit;
 	private Date boardDate;
+	 
+	private String writeId;
+	
+  	public String getWriteId() {
+		return writeId;
+	}
+	public void setWriteId(String writeId) {
+		this.writeId = writeId;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}

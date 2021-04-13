@@ -30,6 +30,7 @@ public interface BoardDAO {
 	public List<BoardDTO> listPage(Criteria cri);
 	public int listCount();
    
-	
+	//아이디 체크 (작성자로 체크)
+	public List<BoardDTO> idCheck(BoardDTO board);
 	
 }

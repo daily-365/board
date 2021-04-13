@@ -6,5 +6,5 @@ public interface MemberService {
 
 	public void signup(MemberDTO member);
 	
-	public boolean signin(MemberDTO member);
+	public MemberDTO signin(MemberDTO member);
 }
