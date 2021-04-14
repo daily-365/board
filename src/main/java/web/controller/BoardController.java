@@ -74,6 +74,12 @@ public class BoardController {
 	  service.modifyBoard(board);
 		
 	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/delete",method = RequestMethod.GET)
 	public void deleteBoard(@RequestParam("boardNo") int boardNo) {
 		logger.info("Borad Delete");

@@ -8,7 +8,14 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-
+<!-- 	관리자 계정을 위한 인터셉터 -->
+	<beans:bean id="AdminInterceptor" class="web.interceptor.AdminInterceptor"/>
+	<interceptors>
+	 <interceptor>
+	 <mapping path="/admin/**"/>
+	  <beans:ref bean="AdminInterceptor"/>
+	   </interceptor>
+	</interceptors>    
 		
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
